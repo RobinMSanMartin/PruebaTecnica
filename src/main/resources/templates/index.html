@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Usuarios</title>
+</head>
+<body>
+    <h2>Listado de Usuarios</h2>
+    <div th:if="${users.isEmpty()}">No se han agregado Usuarios!!!</div>
+    <table th:if="${not users.isEmpty}">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user: ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td><a th:href="@{'/show/'+${user.id}}">Editar</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a type="button" href="/create">Agregar Registros</a>
+</body>
+</html>
